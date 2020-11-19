@@ -19,7 +19,7 @@ provider:
         # - lambda: GetFunctionConfiguration
         # - lambda: AddPermission
         # - s3: GetObject
-      Resource: "*"
+      Resource: "arn:aws:iam::*:role/*"
   # role: ${env:AWS_LAMBDA_ROLE_ARN}
   stage: prod
 
