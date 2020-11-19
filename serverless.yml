@@ -1,4 +1,4 @@
-service: deploy_test
+service: deploy
 provider:
   name: aws
   runtime: python3.8
@@ -23,4 +23,4 @@ functions:
     name: ${self:service}-${self:provider.stage}--deploy_test
     module: functions/deploy_test
     handler: main.lambda_handler
-    environment:
+    # environment:
