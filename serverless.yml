@@ -3,7 +3,24 @@ provider:
   name: aws
   runtime: python3.8
   region: us-east-2
-  role: ${env:AWS_LAMBDA_ROLE_ARN}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - cloudformation: CreateStack
+        - cloudformation: DescribeStacks
+        - cloudformation: CreateChangeSet
+        - cloudformation: ListStacks
+        - cloudformation: UpdateStack
+        - cloudformation: DescribeChangeSet
+        - cloudformation: ExecuteChangeSet
+        - iam: GetRole
+        - lambda: UpdateFunctionCode
+        - lambda: UpdateFunctionConfig
+        - lambda: GetFunctionConfiguration
+        - lambda: AddPermission
+        - s3: GetObject
+      Resource: "*"
+  # role: ${env:AWS_LAMBDA_ROLE_ARN}
   stage: prod
 
 plugins:
