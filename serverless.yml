@@ -1,0 +1,26 @@
+service: deploy_test
+provider:
+  name: aws
+  runtime: python3.8
+  region: ap-northeast-1
+  role: ${env:AWS_LAMBDA_ROLE_ARN}
+  stage: prod
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+
+package:
+  individually: true
+
+functions:
+  deploy_test:
+    runtime: python3.8
+    name: ${self:service}-${self:provider.stage}--deploy_test
+    module: functions/deploy_test
+    handler: main.lambda_handler
+    environment:

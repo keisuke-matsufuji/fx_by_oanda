@@ -6,5 +6,7 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # 環境変数の値を代入
-ACCOUNT_ID = os.environ.get("API_ACCOUNT_ID") 
-ACCESS_TOKEN = os.environ.get("API_ACCESS_TOKEN") 
+DYNAMODB_ENDPOINT = os.environ.get("DYNAMODB_ENDPOINT", None)
+
+OANDA_ACCOUNT_ID = os.environ.get("OANDA_API_ACCOUNT_ID") 
+OANDA_ACCESS_TOKEN = os.environ.get("OANDA_API_ACCESS_TOKEN") 
