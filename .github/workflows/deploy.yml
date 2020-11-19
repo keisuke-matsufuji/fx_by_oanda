@@ -1,9 +1,9 @@
-name: Auto Deploy to AWS Lambda
-
 on:
   push:
     branches:
       - main
+
+name: Auto Deploy to AWS Lambda
 
 jobs:
   deploy:
@@ -33,5 +33,9 @@ jobs:
         run: |
           sls plugin install -n serverless-python-requirements
           sls deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_LAMBDA_ROLE_ARN: ${{ secrets.AWS_LAMBDA_ROLE_ARN }}
 
       
