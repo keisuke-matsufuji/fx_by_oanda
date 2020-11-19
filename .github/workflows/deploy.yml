@@ -3,7 +3,7 @@ name: Auto Deploy to AWS Lambda
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
