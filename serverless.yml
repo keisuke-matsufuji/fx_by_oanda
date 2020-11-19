@@ -7,18 +7,18 @@ provider:
     - Effect: "Allow"
       Action:
         - cloudformation: CreateStack
-        - cloudformation: DescribeStacks
-        - cloudformation: CreateChangeSet
-        - cloudformation: ListStacks
-        - cloudformation: UpdateStack
-        - cloudformation: DescribeChangeSet
-        - cloudformation: ExecuteChangeSet
-        - iam: GetRole
-        - lambda: UpdateFunctionCode
-        - lambda: UpdateFunctionConfig
-        - lambda: GetFunctionConfiguration
-        - lambda: AddPermission
-        - s3: GetObject
+        # - cloudformation: DescribeStacks
+        # - cloudformation: CreateChangeSet
+        # - cloudformation: ListStacks
+        # - cloudformation: UpdateStack
+        # - cloudformation: DescribeChangeSet
+        # - cloudformation: ExecuteChangeSet
+        # - iam: GetRole
+        # - lambda: UpdateFunctionCode
+        # - lambda: UpdateFunctionConfig
+        # - lambda: GetFunctionConfiguration
+        # - lambda: AddPermission
+        # - s3: GetObject
       Resource: "*"
   # role: ${env:AWS_LAMBDA_ROLE_ARN}
   stage: prod
