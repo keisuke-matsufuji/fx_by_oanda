@@ -40,4 +40,6 @@ functions:
     name: ${self:service}-${self:provider.stage}--deploy_test
     module: functions/deploy_test
     handler: main.lambda_handler
-    # environment:
+    environment:
+      - DYNAMODB_ENDPOINT: 
+        ENV_PARAM_TEST: env_test
