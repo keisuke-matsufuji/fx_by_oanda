@@ -1,13 +1,13 @@
-import pytz
-import datetime
+import boto3
+import settings
 
 def lambda_handler(event, context):
 
     print('run')
 
-    jst = pytz.timezone('Asia/Tokyo')
-    jst_now = datetime.datetime.now(tz=jst)
-    print('jst_now!!!!!!!!!!!')
-    print(jst_now)
+    dynamodb = boto3.client('dynamodb', endpoint_url=settings.DYNAMODB_ENDPOINT)
+
+    print('dynamodb')
+    print(dynamodb)
 
     print('all done')

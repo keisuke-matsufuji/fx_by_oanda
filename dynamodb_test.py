@@ -40,6 +40,6 @@ print(dynamodb)
 # print('Table :', table)
 # print('Table status:', table.table_status)
 
-tables = dynamodb.list_tables()
+# tables = dynamodb.list_tables()
 
-print('Tables List:',tables['TableNames'])
+# print('Tables List:',tables['TableNames'])
