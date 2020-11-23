@@ -30,6 +30,8 @@ custom:
   pythonRequirements:
     dockerizePip: true
     slim: true
+    pipCmdExtraArgs:
+      - --upgrade setuptool
 
 package:
   individually: true
