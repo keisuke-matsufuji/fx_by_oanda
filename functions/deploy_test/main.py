@@ -1,3 +1,4 @@
+import requirements
 import boto3
 import settings
 
