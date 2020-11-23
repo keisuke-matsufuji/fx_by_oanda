@@ -31,7 +31,7 @@ custom:
     dockerizePip: true
     slim: true
     pipCmdExtraArgs:
-      - --upgrade setuptool
+      - --upgrade
 
 package:
   individually: true
