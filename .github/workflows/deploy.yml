@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to Lambda
         run: |
           sls plugin install -n serverless-python-requirements
+          export SLS_DEBUG=true
           sls deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
