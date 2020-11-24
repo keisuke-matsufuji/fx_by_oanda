@@ -1,4 +1,3 @@
 pytz
-os
 boto3
 python-dotenv
