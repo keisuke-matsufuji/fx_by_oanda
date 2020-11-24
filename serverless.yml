@@ -30,8 +30,6 @@ custom:
   pythonRequirements:
     dockerizePip: true
     slim: true
-    # pipCmdExtraArgs:
-    #   - setuptools --upgrade
 
 package:
   individually: true
@@ -43,5 +41,5 @@ functions:
     module: functions/deploy_test
     handler: main.lambda_handler
     environment:
-      - DYNAMODB_ENDPOINT: ""
+      - DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
         ENV_PARAM_TEST: env_test
