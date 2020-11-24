@@ -43,5 +43,5 @@ functions:
     module: functions/deploy_test
     handler: main.lambda_handler
     environment:
-      # - DYNAMODB_ENDPOINT: 
-      - ENV_PARAM_TEST: env_test
+      - DYNAMODB_ENDPOINT: ""
+        ENV_PARAM_TEST: env_test
