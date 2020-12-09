@@ -36,7 +36,7 @@ package:
 
 # AWS Lambda Layers
 layers:
-  layer_test:
+  boto:
     path: layers
     name: ${self:service}-layer_test
     compatibleRuntimes:
@@ -52,7 +52,7 @@ functions:
     module: functions/deploy_test
     handler: main.lambda_handler
     layers:
-      - {Ref: PandasLambdaLayer}
+      - {Ref: BotoLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
