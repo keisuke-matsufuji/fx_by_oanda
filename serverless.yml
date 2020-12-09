@@ -26,10 +26,10 @@ provider:
 # plugins:
 #   - serverless-python-requirements
 
-# custom:
-#   pythonRequirements:
-#     dockerizePip: true
-#     slim: true
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
 
 # package:
 #   individually: true
