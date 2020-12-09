@@ -18,8 +18,8 @@ RUN pip3 install -r requirements.txt -t ./python
 # CMD pip install -r requirements.txt && \
 #   zip -9 deploy_package.zip main.py && \
 #   zip -r9 deploy_package.zip *
-# CMD zip -r layers.zip ./python > /dev/null
+CMD zip -r layers.zip ./python > /dev/null
 # CMD zip -r layers.zip ./python
 
-CMD zip -9 layers.zip main.py && \
-  zip -r9 layers.zip *
+# CMD zip -9 layers.zip main.py && \
+#   zip -r9 layers.zip *
