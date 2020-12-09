@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  layer:
+    # volumes:
+    #   - ./docker/layers:/var/task
+    # container_name: layer
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/layers/Dockerfile
+    # ports:
+    #   - 3000:3000
+
+    image: python:3.8
+    container_name: layer
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/layers_local/Dockerfile
+    tty: true
+    volumes:
+      - ./opt/:/srv:rw,delegated
+    ports:
+      - 3000:3000
+    working_dir: /srv
+    environment:
+      TZ: 'Asia/Tokyo'
+    # command: python3
+    command: pip3 install -r requirements.txt -t ./layers
+    #   - cp ./requirements.txt ./layers/requirements.txt
+      # - pip3 install -r requirements.txt -t ./var/task
+
+  docker_test:
+    # image: lambci/lambda:python3.8
+    container_name: docker-lambda-local
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/lambda/Dockerfile
+    volumes:
+      - ./functions/docker_test:/var/task
+      # - ./opt:/opt:delegated
+    # ports:
+    #   - 9001:9001
+    working_dir: /var/task
+    # depends_on:
+    #   - layer
+    environment:
+      # DOCKER_LAMBDA_STAY_OPEN: 1
+      # DOCKER_LAMBDA_WATCH: 1
+      DOCKER_LAMBDA_DEBUG: 1
+      TZ: 'Asia/Tokyo'
+    # command: 
+    #   - pip install -r requirements.txt
+    #   - lambda_function.lambda_handler
+    command: python -c "import lambda_function; lambda_function.lambda_handler({}, None)"
+    # command: python3
+    # command:
+    #   - pip3 install -r requirements.txt -t .
+    #   - python lambda_function.py

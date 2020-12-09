@@ -34,12 +34,25 @@ custom:
 package:
   individually: true
 
+# AWS Lambda Layers
+layers:
+  layer_test:
+    path: layers
+    name: ${self:service}-layer_test
+    compatibleRuntimes:
+      - python3.8
+    allowedAccounts:
+      - '*'
+
+# AWS Lambda Functions
 functions:
   deploy_test:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--deploy_test
     module: functions/deploy_test
     handler: main.lambda_handler
+    layers:
+      - {Ref: PandasLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
