@@ -34,8 +34,9 @@ custom:
 package:
   individually: true
   exclude:
-    - docker/lambda/**
-    - docker/layers/**
+    # - docker/lambda/**
+    # - docker/layers/**
+    - DockerFile
     - README.md
     - docker-compose.yml
 
