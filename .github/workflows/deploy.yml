@@ -40,7 +40,8 @@ jobs:
           # sls plugin install -n serverless-python-requirements
           export SLS_DEBUG=true
           # pip install --upgrade setuptool
-          cd functions/deploy_test && sls deploy
+          # cd functions/deploy_test && sls deploy
+          sls deploy
           
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
