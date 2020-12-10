@@ -50,7 +50,7 @@ functions:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--deploy_test
     module: functions/deploy_test
-    handler: main.lambda_handler
+    handler: functions/deploy_test/main.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
     environment:
