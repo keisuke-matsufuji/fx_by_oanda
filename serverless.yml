@@ -34,7 +34,7 @@ custom:
 package:
   individually: true
   exclude:
-    - docker/*
+    - docker/**
     - README.md
     - docker-compose.yml
 
@@ -58,7 +58,7 @@ functions:
       individually: true
     path: functions/deploy_test/
     include:
-      - functions/deploy_test/*
+      - functions/deploy_test/**
     # exclude:
     #   - docker
     handler: functions/deploy_test/main.lambda_handler
