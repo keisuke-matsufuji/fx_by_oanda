@@ -31,8 +31,8 @@ custom:
     dockerizePip: true
     slim: true
 
-# package:
-#   individually: true
+package:
+  individually: true
 
 # AWS Lambda Layers
 layers:
