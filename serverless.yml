@@ -57,9 +57,10 @@ functions:
     module: functions/deploy_test
     package:
       individually: true
-    path: functions/deploy_test/
-    include:
+      include:
       - functions/deploy_test/**
+    path: functions/deploy_test/
+    
     # exclude:
     #   - docker
     handler: functions/deploy_test/main.lambda_handler
