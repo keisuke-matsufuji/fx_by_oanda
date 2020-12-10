@@ -36,8 +36,8 @@ package:
   exclude:
     # - docker/lambda/**
     # - docker/layers/**
-    - DockerFile
-    - README.md
+    # - DockerFile
+    # - README.md
     - docker-compose.yml
 
 # AWS Lambda Layers
