@@ -34,7 +34,8 @@ custom:
 package:
   individually: true
   exclude:
-    # - Dockerfile
+    - docker
+    - README.md
     - docker-compose.yml
 
 # AWS Lambda Layers
@@ -58,8 +59,8 @@ functions:
     path: functions/deploy_test/
     include:
       - functions/deploy_test/*
-    exclude:
-      - docker
+    # exclude:
+    #   - docker
     handler: functions/deploy_test/main.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
