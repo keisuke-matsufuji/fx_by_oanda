@@ -34,7 +34,7 @@ custom:
 package:
   individually: true
   exclude:
-    - docker/
+    - docker/*
     - README.md
     - docker-compose.yml
 
