@@ -31,8 +31,8 @@ custom:
     dockerizePip: true
     slim: true
 
-# package:
-#   individually: true
+package:
+  individually: true
   # exclude:
     # - docker/lambda/**
     # - docker/layers/**
@@ -62,8 +62,8 @@ functions:
       # - functions/deploy_test/**
     # path: functions/deploy_test/
     
-    # exclude:
-    #   - docker
+      exclude:
+        - docker-compose.yml
     handler: functions/deploy_test/main.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
