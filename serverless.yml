@@ -60,10 +60,11 @@ functions:
       individually: true
       # include:
       # - functions/deploy_test/**
-    # path: functions/deploy_test/
-    
       exclude:
         - docker-compose.yml
+      # path: functions/deploy_test/
+    
+      
     handler: functions/deploy_test/main.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
