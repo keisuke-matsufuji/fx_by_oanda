@@ -58,8 +58,8 @@ functions:
     module: functions/deploy_test
     package:
       individually: true
-      include:
-      - functions/deploy_test/**
+      # include:
+      # - functions/deploy_test/**
     path: functions/deploy_test/
     
     # exclude:
