@@ -71,3 +71,4 @@ functions:
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
+      OANDA_API_ACCOUNT_ID: ${env:OANDA_API_ACCOUNT_ID}
