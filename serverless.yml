@@ -66,8 +66,8 @@ functions:
     
       
     handler: functions/deploy_test/main.lambda_handler
-    # layers:
-    #   - {Ref: BotoLambdaLayer}
+    layers:
+      - {Ref: BotoLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
