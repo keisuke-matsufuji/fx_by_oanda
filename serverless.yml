@@ -41,14 +41,14 @@ package:
     # - docker-compose.yml
 
 # AWS Lambda Layers
-layers:
-  boto:
-    path: layers
-    name: ${self:service}-layer_test
-    compatibleRuntimes:
-      - python3.8
-    allowedAccounts:
-      - '*'
+# layers:
+#   boto:
+#     path: layers
+#     name: ${self:service}-layer_test
+#     compatibleRuntimes:
+#       - python3.8
+#     allowedAccounts:
+#       - '*'
 
 # AWS Lambda Functions
 functions:
