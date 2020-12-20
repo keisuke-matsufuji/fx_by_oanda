@@ -15,7 +15,7 @@ services:
     working_dir: /opt
     environment:
       TZ: 'Asia/Tokyo'
-    command: python -c "import main; main.lambda_handler({}, None)"
+    # command: python -c "import main; main.lambda_handler({}, None)"
     #   - cp ./requirements.txt ./layers/requirements.txt
       # - pip3 install -r requirements.txt -t ./var/task
   
