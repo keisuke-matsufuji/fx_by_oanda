@@ -54,8 +54,9 @@ layers:
 functions:
   deploy_test:
     runtime: python3.8
-    name: ${self:service}-${self:provider.stage}--deploy_test
-    module: functions/deploy_test
+    name: ${self:service}-${self:provider.stage}--fx_auto_trading
+    # module: functions/deploy_test
+    module: functions/fx_auto_trading
     package:
       individually: true
       # include:
@@ -65,7 +66,8 @@ functions:
       # path: functions/deploy_test/
     
       
-    handler: functions/deploy_test/main.lambda_handler
+    # handler: functions/deploy_test/main.lambda_handler
+    handler: functions/fx_auto_trading/lambda_function.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
     environment:

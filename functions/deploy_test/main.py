@@ -1,5 +1,6 @@
 import boto3
-import settings
+
+# import settings
 
 def lambda_handler(event, context):
 
