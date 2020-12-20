@@ -37,8 +37,7 @@ services:
     # ports:
     #   - 9001:9001
     working_dir: /var/task
-    env_file:
-      - ./.env
+    env_file: ./.env
     environment:
       # DOCKER_LAMBDA_STAY_OPEN: 1
       # DOCKER_LAMBDA_WATCH: 1
