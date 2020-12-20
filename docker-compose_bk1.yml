@@ -13,7 +13,6 @@ services:
     ports:
       - 3000:3000
     working_dir: /opt
-    env_file: ./.env
     environment:
       TZ: 'Asia/Tokyo'
     # command: python -c "import main; main.lambda_handler({}, None)"
@@ -37,7 +36,7 @@ services:
     
     # ports:
     #   - 9001:9001
-    working_dir: /var/task
+    # working_dir: /var/task
     env_file: ./.env
     environment:
       # DOCKER_LAMBDA_STAY_OPEN: 1

@@ -1,38 +1,19 @@
 FROM lambci/lambda:python3.8
 
 WORKDIR /var/task
-# COPY ./functions/docker_test/requirements.txt /var/task
-# COPY requirements.txt /var/task 
-# COPY ./functions/docker_test /var/task
-# COPY . .
-# COPY ./functions/docker_test /var/task
 
-# ADD ./functions/docker_test/requirements.txt ./var/task 
-# ADD ./functions/docker_test /var/task
-# ADD ./requirements.txt .
-
-
-# ADD ./functions/deploy_test .
-# ADD ./requirements.txt .
 ADD ./functions/fx_auto_trading .
 ADD ./requirements.txt .
-
-# CMD ls
-
-# RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-#   pip install -r requirements.txt -t /var/task
-# RUN pip install -r requirements.txt -t /var/task
-# RUN zip -r pandas-1.0.3.zip ./python > /dev/null
-# RUN chmod +x docker-entrypoint.sh
-# ENTRYPOINT ["entrypoint.sh"]
-# COPY docker-node-entrypoint.sh /entrypoint.sh
-# RUN chmod +x entrypoint.sh 
-# ENTRYPOINT ["/entrypoint.sh"] 
-# RUN pip install -r requirements.txt -t .
 
 RUN pip3 install -r requirements.txt -t /var/task
 RUN zip -9 deploy_package.zip lambda_function.py
 RUN zip -r9 deploy_package.zip .
+
+# RUN pip3 install -r requirements.txt -t python/lib/python3.8/site-packages/
+# RUN zip -r deploy.zip ./python > /dev/null
+
+# RUN zip -9 deploy_package.zip lambda_function.py
+# RUN zip -r9 deploy_package.zip *
 
 # CMD zip -9 deploy_package.zip ./functions/docker_test/lambda_function.py && \
 #   zip -r9 deploy_package.zip *

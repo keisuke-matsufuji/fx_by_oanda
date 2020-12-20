@@ -8,12 +8,11 @@ services:
       context: .
       dockerfile: ./docker/layers/Dockerfile
     tty: true
-    # volumes:
-    #   - ./opt/:/srv:rw,delegated
+    volumes:
+      - ./opt/:/srv:rw,delegated
     ports:
       - 3000:3000
-    working_dir: /opt
-    env_file: ./.env
+    working_dir: /srv
     environment:
       TZ: 'Asia/Tokyo'
     # command: python -c "import main; main.lambda_handler({}, None)"
@@ -28,16 +27,16 @@ services:
     build:
       context: .
       dockerfile: ./docker/fx_auto_trading/Dockerfile
-    # volumes:
-    #   - ./docker/lambda:/var/task:delegated
-    #   - ./opt:/opt:delegated
+    volumes:
+      - ./functions/fx_auto_trading:/var/task:delegated
+      - ./opt:/opt:delegated
     # volumes:
     #   - ./functions/fx_auto_trading:/var/task:delegated
     #   - ./opt:/opt:delegated,rw
     
-    # ports:
-    #   - 9001:9001
-    working_dir: /var/task
+    ports:
+      - 9001:9001
+    # working_dir: /var/task
     env_file: ./.env
     environment:
       # DOCKER_LAMBDA_STAY_OPEN: 1

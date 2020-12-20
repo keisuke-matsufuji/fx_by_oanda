@@ -2,7 +2,7 @@ FROM lambci/lambda:build-python3.8
 
 WORKDIR /opt
 ADD ./requirements.txt .
-ADD ./functions/deploy_test .
+# ADD ./functions/deploy_test .
 # ADD . .
 
 # CMD ls
