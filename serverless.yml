@@ -38,7 +38,7 @@ package:
     - docker/layers/**
     - DockerFile
     - README.md
-    - docker-compose.yml
+    # - docker-compose.yml
 
 # AWS Lambda Layers
 layers:
