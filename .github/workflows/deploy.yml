@@ -18,7 +18,8 @@ jobs:
           node-version: '10.x'
 
       - name: Install Dependencies
-        working-directory: ./functions/deploy_test
+        working-directory: ./functions/fx_auto_trading
+        # working-directory: ./functions/deploy_test
         run: |
           npm install serverless -g
           npm install
