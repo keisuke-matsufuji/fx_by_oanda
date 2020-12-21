@@ -8,18 +8,20 @@ services:
       context: .
       dockerfile: ./docker/layers/Dockerfile
     tty: true
-    # volumes:
-    #   - ./opt/:/srv:rw,delegated
+    volumes:
+      - ./opt/:/opt
     ports:
       - 3000:3000
     working_dir: /opt
-    # env_file: ./.env
     environment:
       TZ: 'Asia/Tokyo'
+    # command:
+    #   - pip3 install -r requirements.txt -t ./python
     # command: python -c "import main; main.lambda_handler({}, None)"
     #   - cp ./requirements.txt ./layers/requirements.txt
       # - pip3 install -r requirements.txt -t ./var/task
   
+
   # Lambda function (fx_auto_trading)
   fx_auto_trading:
     # image: lambci/lambda:python3.8
@@ -31,28 +33,21 @@ services:
     # volumes:
     #   - ./docker/lambda:/var/task:delegated
     #   - ./opt:/opt:delegated
-    # volumes:
-    #   - ./functions/fx_auto_trading:/var/task:delegated
-    #   - ./opt:/opt:delegated,rw
+    volumes:
+      - ./functions/fx_auto_trading:/var/task:delegated
+      # - ./:
+      - ./opt:/opt:delegated,rw
     
     # ports:
     #   - 9001:9001
     working_dir: /var/task
-    # env_file: ./.env
+    env_file: ./.env
     environment:
-      # DOCKER_LAMBDA_STAY_OPEN: 1
-      # DOCKER_LAMBDA_WATCH: 1
+      DOCKER_LAMBDA_STAY_OPEN: 1
+      DOCKER_LAMBDA_WATCH: 1
       DOCKER_LAMBDA_DEBUG: 1
       TZ: 'Asia/Tokyo'
-    # command: 
-    #   - pip install -r requirements.txt
-    #   - lambda_function.lambda_handler
-    # command: python -c "import lambda_function; lambda_function.lambda_handler({}, None)"
     command: python -c "import lambda_function; lambda_function.lambda_handler({}, None)"
-    # command: python3
-    # command:
-    #   - pip3 install -r requirements.txt -t .
-    #   - python lambda_function.py
     
     
   # dynamodb_local

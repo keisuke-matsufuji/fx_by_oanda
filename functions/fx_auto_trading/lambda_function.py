@@ -1,11 +1,16 @@
-import boto3
 import os
+import sys
+# layerにあがっているpythonモジュール群を参照するため、pathを追加
+sys.path.append('/opt')
+sys.path.append('/opt/python')
+import boto3
 
 # import settings
 
 def lambda_handler(event, context):
 
     print('run')
+    print('sys.path:', sys.path)
 
     # message = settings.ENV_PARAM_TEST
     message = os.environ.get("ENV_PARAM_TEST", None)
@@ -22,6 +27,6 @@ def lambda_handler(event, context):
     print('dynamodb')
     print(dynamodb)
 
-    # print('反映されている')
+    print('反映されている')
 
     print('all done')
