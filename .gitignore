@@ -2,4 +2,4 @@
 __pycache__
 .env
 functions/docker_test
-opt/
+opt/python
