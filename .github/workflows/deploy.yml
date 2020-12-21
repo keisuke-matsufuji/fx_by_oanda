@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           # docker-compose build layer
-          docker build layer .
+          docker build -t layer . 
       
       - name: Deploy to Lambda
         run: |
