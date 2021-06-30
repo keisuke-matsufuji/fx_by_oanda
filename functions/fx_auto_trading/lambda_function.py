@@ -7,6 +7,7 @@ from decimal import Decimal
 sys.path.append('/opt')
 sys.path.append('/opt/python')
 import boto3
+# import pandas as pd
 import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート

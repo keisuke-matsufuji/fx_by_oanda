@@ -3,7 +3,6 @@ import json
 import os
 import requests
 import sys
-import time
 
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
 sys.path.append('/opt')
