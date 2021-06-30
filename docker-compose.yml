@@ -40,6 +40,12 @@ services:
       TZ: 'Asia/Tokyo'
 
     command: python -c "import lambda_function; lambda_function.lambda_handler({}, None)"
+    # links:
+    #   - dynamodb
+    depends_on:
+      - dynamodb
+    networks:
+      - network
     
     
   # dynamodb_local
@@ -51,4 +57,14 @@ services:
     ports:
       - "5984:5984"
     command: "-jar DynamoDBLocal.jar -port 5984 -dbPath ./data -sharedDb"
-    
+    # networks:
+    #   - lambda-local
+    networks:
+      - network
+  
+networks:
+  # lambda-local:
+  #     external: true
+  network:
+    driver: bridge
+    external: true

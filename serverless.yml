@@ -64,7 +64,6 @@ functions:
       exclude:
         - docker-compose.yml
       # path: functions/deploy_test/
-    
       
     # handler: functions/deploy_test/main.lambda_handler
     handler: functions/fx_auto_trading/lambda_function.lambda_handler
