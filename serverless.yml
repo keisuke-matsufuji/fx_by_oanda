@@ -53,7 +53,7 @@ layers:
 # AWS Lambda Functions
 functions:
   # deploy_test:
-  fx_auto_trading:
+  trading:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--fx_auto_trading
     # module: functions/deploy_test
