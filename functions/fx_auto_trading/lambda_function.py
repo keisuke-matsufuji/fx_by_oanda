@@ -7,9 +7,6 @@ from decimal import Decimal
 sys.path.append('/opt')
 sys.path.append('/opt/python')
 import boto3
-# import pandas as pd
-import pandas as pd
-import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 from db import price_log
@@ -41,30 +38,7 @@ def lambda_handler(event, context):
         last_data = PriceLog.get_item(candle_data["candle_date"])
         # 現在日時でDBデータの取得ができなかった場合（当日初回実行時）、前日日付でデータ取得（取得できるまで）
         if len(last_data) == 0:
-            loop_flg = True
-            loop_count = 1
-            while loop_flg:
-                pre_date = pd.to_datetime(candle_data["close_time"]) - offsets.Day(loop_count)
-                pre_date = pre_date.strftime('%Y-%m-%d')
-                last_data = PriceLog.get_item(pre_date)
-                if len(last_data) > 0:
-                    loop_flg = False
-                    break
-                loop_count += 1
-                if loop_count == 3:
-                    params = {
-                        'date'        : candle_data["candle_date"],
-                        'time'        : candle_data["candle_time"],
-                        'open_price'  : Decimal(str(candle_data['open_price'])),
-                        'close_price' : Decimal(str(candle_data['close_price'])),
-                        'buy_signal'  : 0,
-                        # 'sell_signal': 0,
-                        'buy_position': False,
-                        # 'sell_position': False,
-                    }
-                    PriceLog.put_item(params)
-                    print('DBからデータの取得ができなかったため、ローソク足データを格納し処理を終了')
-                    return
+            return
 
 
         # last_date = last_data[0]['date']

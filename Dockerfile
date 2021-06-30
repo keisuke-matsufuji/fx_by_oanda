@@ -1,4 +1,5 @@
-# Dploy to Lambda Layer
+# Deploy to Lambda Layer
+# デプロイフェーズで呼ばれている
 
 FROM lambci/lambda:build-python3.8
 
