@@ -27,7 +27,7 @@ r = InstrumentsCandles(instrument="USD_JPY",params={"granularity":"M1"})
 api.request(r)
 
 #ドル円データを取得する関数
-def get_price(min,i):
+def get_candles(min,i):
 	data = r.response["candles"][i]
 	
 	return { "close_time" : pd.to_datetime(data["time"]),
@@ -85,7 +85,7 @@ def check_order( flag ):
 	return flag
 
 #ここからメイン処理
-last_data = get_price("M1",0)
+last_data = get_candles("M1",0)
 print_price( last_data )
  
 flag = {
@@ -100,7 +100,7 @@ while i < 500:
     if flag["order"]:
         flag = check_order( flag )
     
-    data = get_price("M1",i)
+    data = get_candles("M1",i)
     if data["close_time"] != last_data["close_time"]:
         print_price( data )
 		
