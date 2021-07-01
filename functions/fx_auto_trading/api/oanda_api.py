@@ -10,8 +10,8 @@ sys.path.append('/opt/python')
 # import oandapyV20
 from oandapyV20 import API
 from oandapyV20.endpoints import accounts, instruments, orders, positions
-# import pandas as pd
-# import pandas.tseries.offsets as offsets
+import pandas as pd
+import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 from db import position_log
@@ -56,8 +56,8 @@ class OandaApi(object):
 			data = response["candles"][i]
 			# print('data', data)
 
-			# close_time = pd.to_datetime(data["time"]) + offsets.Hour(9)
-			close_time = data["time"]
+			close_time = pd.to_datetime(data["time"]) + offsets.Hour(9)
+			# close_time = data["time"]
 			candle_date = close_time.strftime('%Y-%m-%d')
 			candle_time = close_time.strftime('%H:%M')
 			candle_date_time = datetime.datetime.strptime(
