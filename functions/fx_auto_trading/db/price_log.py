@@ -10,7 +10,6 @@ from boto3.dynamodb.conditions import Key
 class PriceLog(object):
     """
     クラス変数
-
     """
     # エンドポイントURL
     endpoint_url = os.environ.get("DYNAMODB_ENDPOINT", None)
