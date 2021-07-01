@@ -4,8 +4,8 @@ import time
 import datetime
 from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
-sys.path.append('/opt')
-sys.path.append('/opt/python')
+# sys.path.append('/opt')
+# sys.path.append('/opt/python')
 import boto3
 # import pandas as pd
 import pandas as pd
