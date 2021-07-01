@@ -2,5 +2,6 @@
 __pycache__
 .env
 functions/docker_test
+functions/fx_auto_trading_cp
 opt/python
 data

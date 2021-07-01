@@ -1,3 +1,5 @@
+# Deplpoy to Lambda And Lambda Layers
+
 service: deploy
 provider:
   name: aws
@@ -67,7 +69,8 @@ functions:
       # path: functions/deploy_test/
       
     # handler: functions/deploy_test/main.lambda_handler
-    handler: functions/fx_auto_trading/lambda_function.lambda_handler
+    # handler: functions/fx_auto_trading/lambda_function.lambda_handler
+    handler: lambda_function.lambda_handler
     layers:
       - {Ref: BotoLambdaLayer}
     environment:
