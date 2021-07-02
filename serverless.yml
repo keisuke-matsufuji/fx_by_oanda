@@ -35,11 +35,11 @@ custom:
 
 package:
   individually: true
-  exclude:
-    - docker/lambda/**
-    - docker/layers/**
-    - DockerFile
-    - README.md
+  # exclude:
+  #   - docker/lambda/**
+  #   - docker/layers/**
+  #   - DockerFile
+  #   - README.md
     # - docker-compose.yml
 
 # AWS Lambda Layers
@@ -55,24 +55,15 @@ package:
 # AWS Lambda Functions
 functions:
   # deploy_test:
-  trading:
+  fx_auto_trading:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--fx_auto_trading
     # module: functions/deploy_test
     module: functions/fx_auto_trading
-    package:
-      individually: true
-      # include:
-      # - functions/deploy_test/**
-      exclude:
-        - docker-compose.yml
-      # path: functions/deploy_test/
       
     # handler: functions/deploy_test/main.lambda_handler
     # handler: functions/fx_auto_trading/lambda_function.lambda_handler
     handler: lambda_function.lambda_handler
-    layers:
-      - {Ref: BotoLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
