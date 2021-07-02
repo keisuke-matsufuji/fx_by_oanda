@@ -35,7 +35,7 @@ jobs:
 
       - name: Deploy to Lambda
         run: |
-          # sls plugin install -n serverless-python-requirements
+          sls plugin install -n serverless-python-requirements
           export SLS_DEBUG=true
           # pip install --upgrade setuptool
           # cd functions/deploy_test && sls deploy
