@@ -1,5 +1,4 @@
-# Deplpoy to Lambda
-
+# Deplpoy to Lambda And Lambda Layers
 
 service: deploy
 provider:
@@ -36,38 +35,46 @@ custom:
     slim: true
     layer: true
 
-# package:
-#   individually: true
-
-#   exclude:
-#     - docker/lambda/**
-#     - docker/layers/**
-#     - DockerFile
-#     - README.md
-#     - docker-compose.yml
+package:
+  # individually: true
+  exclude:
+    - docker/lambda/**
+    - docker/layers/**
+    - DockerFile
+    - README.md
+    # - docker-compose.yml
 
 # AWS Lambda Layers
-# layers:
-#   boto:
-#     path: layers
-#     name: ${self:service}-layer_test
-#     compatibleRuntimes:
-#       - python3.8
-#     allowedAccounts:
-#       - '*'
+layers:
+  boto:
+    path: layers
+    name: ${self:service}-layer_test
+    compatibleRuntimes:
+      - python3.8
+    allowedAccounts:
+      - '*'
 
 # AWS Lambda Functions
 functions:
   # deploy_test:
-  fx_auto_trading:
+  trading:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--fx_auto_trading
     # module: functions/deploy_test
     module: functions/fx_auto_trading
+    package:
+      individually: true
+      # include:
+      # - functions/deploy_test/**
+      exclude:
+        - docker-compose.yml
+      # path: functions/deploy_test/
       
     # handler: functions/deploy_test/main.lambda_handler
-    # handler: functions/fx_auto_trading/lambda_function.lambda_handler
-    handler: lambda_function.lambda_handler
+    handler: functions/fx_auto_trading/lambda_function.lambda_handler
+    # handler: lambda_function.lambda_handler
+    layers:
+      - {Ref: BotoLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
