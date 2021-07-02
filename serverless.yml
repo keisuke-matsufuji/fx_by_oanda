@@ -35,8 +35,8 @@ custom:
     slim: true
     layer: true
 
-# package:
-#   individually: true
+package:
+  individually: true
 
 #   exclude:
 #     - docker/lambda/**
