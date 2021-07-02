@@ -15,7 +15,9 @@ import pandas.tseries.offsets as offsets
 # from ディレクトリ名 import モジュール名
 # from db import price_log
 # from api import oanda_api
-from . import db, api
+# from . import db, api
+import price_log
+import oanda_api
 
 # Lambda Handler
 def lambda_handler(event, context):
@@ -31,8 +33,8 @@ def lambda_handler(event, context):
         # current_date_time = "{0:%Y-%m-%d %H:%M:%S}".format(now)
 
         # 最新ローソク足日時・時刻
-        # Api = oanda_api.OandaApi()
-        Api = api.oanda_api.OandaApi()
+        Api = oanda_api.OandaApi()
+        # Api = api.oanda_api.OandaApi()
         candle_data = Api.get_candles("M1", -1)
 
         # 最新ローソク足データが現在日付と一致していない場合（市場が閉まっていた場合）、処理を終了する
@@ -44,8 +46,8 @@ def lambda_handler(event, context):
         # メイン処理
         # ------------------
         # 前回データをDBから取得
-        # PriceLog = price_log.PriceLog()
-        PriceLog = db.price_log.PriceLog()
+        PriceLog = price_log.PriceLog()
+        # PriceLog = db.price_log.PriceLog()
         last_data = PriceLog.get_item(candle_data["candle_date"])
         # 現在日時でDBデータの取得ができなかった場合（当日初回実行時）、前日日付でデータ取得（取得できるまで）
         if len(last_data) == 0:
