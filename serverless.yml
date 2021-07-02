@@ -33,6 +33,7 @@ custom:
   pythonRequirements:
     dockerizePip: true
     slim: true
+    layer: true
 
 # package:
 #   individually: true
