@@ -13,8 +13,8 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-from db import price_log
-from api import oanda_api
+from .db import price_log
+from .api import oanda_api
 # from . import db, api
 
 # Lambda Handler
