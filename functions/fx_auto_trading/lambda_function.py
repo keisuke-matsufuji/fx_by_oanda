@@ -4,8 +4,8 @@ import time
 import datetime
 from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
-sys.path.append('/opt')
-sys.path.append('/opt/python')
+# sys.path.append('/opt')
+# sys.path.append('/opt/python')
 import boto3
 # import pandas as pd
 import numpy as numpy
@@ -13,8 +13,8 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-from .db import price_log
-from .api import oanda_api
+from db import price_log
+from api import oanda_api
 # from . import db, api
 
 # Lambda Handler
