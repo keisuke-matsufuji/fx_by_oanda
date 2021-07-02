@@ -1,4 +1,4 @@
-# Deplpoy to Lambda
+# Deplpoy to Lambda And Lambda Layers
 
 service: deploy
 provider:
@@ -25,8 +25,8 @@ provider:
   role: ${env:AWS_LAMBDA_ROLE_ARN}
   stage: prod
 
-plugins:
-  - serverless-python-requirements
+# plugins:
+#   - serverless-python-requirements
 
 custom:
   pythonRequirements:
@@ -43,14 +43,14 @@ package:
     # - docker-compose.yml
 
 # AWS Lambda Layers
-# layers:
-#   boto:
-#     path: layers
-#     name: ${self:service}-layer_test
-#     compatibleRuntimes:
-#       - python3.8
-#     allowedAccounts:
-#       - '*'
+layers:
+  boto:
+    path: layers
+    name: ${self:service}-layer_test
+    compatibleRuntimes:
+      - python3.8
+    allowedAccounts:
+      - '*'
 
 # AWS Lambda Functions
 functions:
