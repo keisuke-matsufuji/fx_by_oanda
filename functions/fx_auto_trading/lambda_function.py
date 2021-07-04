@@ -34,9 +34,10 @@ except ImportError:
 
 # Lambda Handler
 def lambda_handler(event, context):
-    path = "../../opt/python"
-    files = os.listdir(path)
-    print('files', files)
+    # path = "../../opt/python"
+    # files = os.listdir(path)
+    # print('files', files)
+    print('sys.path', sys.path)
 
     i = 1
     # while i < 5000:
