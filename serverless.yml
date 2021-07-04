@@ -37,13 +37,13 @@ custom:
     # layer: true
 
 package:
-  # individually: true
-  # exclude:
-  #   - docker/lambda/**
-  #   - docker/layers/**
-  #   - DockerFile
-  #   - README.md
-    # - docker-compose.yml
+  individually: true
+  exclude:
+    - docker/lambda/**
+    - docker/layers/**
+    - DockerFile
+    - README.md
+    - docker-compose.yml
 
 # AWS Lambda Layers
 # layers:
