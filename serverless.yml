@@ -26,8 +26,8 @@ provider:
   role: ${env:AWS_LAMBDA_ROLE_ARN}
   stage: prod
 
-plugins:
-  - serverless-python-requirements
+# plugins:
+#   - serverless-python-requirements
 
 custom:
   pythonRequirements:
