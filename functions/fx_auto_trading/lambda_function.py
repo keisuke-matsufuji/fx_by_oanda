@@ -38,6 +38,9 @@ def lambda_handler(event, context):
     # files = os.listdir(path)
     # print('files', files)
     print('sys.path', sys.path)
+    path = "/opt/python"
+    files = os.listdir(path)
+    print('files', files)
 
     i = 1
     # while i < 5000:
