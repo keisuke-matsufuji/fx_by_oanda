@@ -34,7 +34,7 @@ custom:
     cacheLocation: ".static_cache"
     dockerizePip: true
     slim: true
-    # layer: true
+    layer: true
 
 # package:
 #   individually: true
