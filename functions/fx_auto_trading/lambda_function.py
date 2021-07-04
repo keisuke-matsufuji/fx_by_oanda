@@ -21,8 +21,16 @@ import pandas.tseries.offsets as offsets
 # from db import price_log
 # from api import oanda_api
 # from . import db, api
-import price_log
-import oanda_api
+# import price_log
+# import oanda_api
+try:
+    import price_log
+except ImportError:
+  pass
+try:
+    import oanda_api
+except ImportError:
+  pass
 
 # Lambda Handler
 def lambda_handler(event, context):
