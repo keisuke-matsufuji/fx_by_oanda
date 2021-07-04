@@ -36,14 +36,14 @@ custom:
     slim: true
     # layer: true
 
-package:
-  individually: true
-  exclude:
-    - docker/lambda/**
-    - docker/layers/**
-    - DockerFile
-    - README.md
-    - docker-compose.yml
+# package:
+#   individually: true
+#   exclude:
+#     - docker/lambda/**
+#     - docker/layers/**
+#     - DockerFile
+#     - README.md
+#     - docker-compose.yml
 
 # AWS Lambda Layers
 # layers:
