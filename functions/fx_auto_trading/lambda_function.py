@@ -56,7 +56,11 @@ def lambda_handler(event, context):
     # files3 = os.listdir(path)
     # print('files3', files3)
 
-    path = "../opt/python"
+    # path = "../opt/python"
+    # files = os.listdir(path)
+    # print('files', files)
+
+    path = "/opt/python"
     files = os.listdir(path)
     print('files', files)
 
