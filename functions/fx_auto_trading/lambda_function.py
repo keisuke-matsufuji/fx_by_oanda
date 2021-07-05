@@ -34,11 +34,15 @@ except ImportError:
 
 # Lambda Handler
 def lambda_handler(event, context):
+    print('sys.path', sys.path)
+    # Pyhon バージョン
+    print('sys バージョン', sys.version)
+
     # path = "../../opt/python"
     # files = os.listdir(path)
     # print('files', files)
-    print('sys.path', sys.path)
-    path = "../../../../opt/python"
+
+    path = "../../../../../opt/python"
     files = os.listdir(path)
     print('files', files)
 
