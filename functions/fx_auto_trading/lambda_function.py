@@ -20,7 +20,7 @@ import pandas.tseries.offsets as offsets
 # from ディレクトリ名 import モジュール名
 # from db import price_log
 sys.path.append('./api')
-from api import oanda_api
+# from api import oanda_api
 # from . import db, api
 # import price_log
 # import oanda_api
@@ -28,10 +28,10 @@ try:
     import price_log
 except ImportError:
   pass
-# try:
-#     import oanda_api
-# except ImportError:
-#   pass
+try:
+    import oanda_api
+except ImportError:
+  pass
 
 # Lambda Handler
 def lambda_handler(event, context):
