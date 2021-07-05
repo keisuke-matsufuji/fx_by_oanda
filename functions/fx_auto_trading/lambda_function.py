@@ -11,6 +11,9 @@ from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
 sys.path.append('/opt')
 sys.path.append('/opt/python')
+
+sys.path.append('functions/fx_auto_trading/api')
+sys.path.append('functions/fx_auto_trading/db')
 import boto3
 # import pandas as pd
 import numpy as numpy
@@ -18,20 +21,19 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-# from db import price_log
-# sys.path.append('./api')
-# from api import oanda_api
+from db import price_log
+from api import oanda_api
 # from . import db, api
 # import price_log
 # import oanda_api
-try:
-    import price_log
-except ImportError:
-  pass
-try:
-    import oanda_api
-except ImportError:
-  pass
+# try:
+#     import price_log
+# except ImportError:
+#   pass
+# try:
+#     import oanda_api
+# except ImportError:
+#   pass
 
 # Lambda Handler
 def lambda_handler(event, context):
@@ -63,10 +65,10 @@ def lambda_handler(event, context):
 
     # path = "./api"
     # files = os.listdir(path)
-    p_opt = os.listdir('/opt')
-    print('p_opt', p_opt)
-    p_sys = os.listdir('/sys')
-    print('p_sys', p_sys)
+    # p_opt = os.listdir('/opt')
+    # print('p_opt', p_opt)
+    # p_sys = os.listdir('/sys/module')
+    # print('p_sys', p_sys)
 
     i = 1
     # while i < 5000:
