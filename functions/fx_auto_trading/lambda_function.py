@@ -19,8 +19,8 @@ import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 # from db import price_log
-sys.path.append('./api')
-from api import oanda_api
+# sys.path.append('./api')
+# from api import oanda_api
 # from . import db, api
 # import price_log
 # import oanda_api
@@ -28,10 +28,10 @@ try:
     import price_log
 except ImportError:
   pass
-# try:
-#     import oanda_api
-# except ImportError:
-#   pass
+try:
+    import oanda_api
+except ImportError:
+  pass
 
 # Lambda Handler
 def lambda_handler(event, context):
@@ -61,9 +61,9 @@ def lambda_handler(event, context):
     # files = os.listdir(path)
     # print('files', files)
 
-    # path = "/opt/python"
-    # files = os.listdir(path)
-    # print('files', files)
+    path = "./api"
+    files = os.listdir(path)
+    print('files', files)
 
     i = 1
     # while i < 5000:
