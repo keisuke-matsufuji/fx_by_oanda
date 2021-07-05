@@ -46,15 +46,19 @@ def lambda_handler(event, context):
     # files = os.listdir(path)
     # print('files', files)
 
-    path = "../"
-    files1 = os.listdir(path)
-    print('files1', files1)
-    path = "../../"
-    files2 = os.listdir(path)
-    print('files2', files2)
-    path = "../../../"
-    files3 = os.listdir(path)
-    print('files3', files3)
+    # path = "../"
+    # files1 = os.listdir(path)
+    # print('files1', files1)
+    # path = "../../"
+    # files2 = os.listdir(path)
+    # print('files2', files2)
+    # path = "../../../"
+    # files3 = os.listdir(path)
+    # print('files3', files3)
+
+    path = "../opt/python"
+    files = os.listdir(path)
+    print('files', files)
 
     i = 1
     # while i < 5000:
