@@ -63,10 +63,10 @@ def lambda_handler(event, context):
 
     # path = "./api"
     # files = os.listdir(path)
-    opt = os.listdir('/opt')
-    print('opt', opt)
-    sys = os.listdir('/sys')
-    print('sys', sys)
+    p_opt = os.listdir('/opt')
+    print('p_opt', p_opt)
+    p_sys = os.listdir('/sys')
+    print('p_sys', p_sys)
 
     i = 1
     # while i < 5000:
