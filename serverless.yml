@@ -60,8 +60,7 @@ custom:
 
 # AWS Lambda Functions
 functions:
-  # deploy_test:
-  trading:
+  functions/fx_auto_trading/lambda_function:
     runtime: python3.8
     name: ${self:service}-${self:provider.stage}--fx_auto_trading
     # module: functions/deploy_test
