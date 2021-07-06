@@ -45,6 +45,11 @@ def lambda_handler(event, context):
     print('currentdir:      ', currentdir)
     ls = os.listdir(currentdir)
     print('ls', ls)
+    # カレントディレクトリを変更
+    os.chdir('functions')
+    ls2 = os.listdir(currentdir)
+    print('ls2', ls2)
+
 
     # print('sys.path', sys.path)
     # Pyhon バージョン
