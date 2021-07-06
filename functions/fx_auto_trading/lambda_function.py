@@ -14,6 +14,8 @@ sys.path.append('/opt/python')
 
 sys.path.append('functions/fx_auto_trading/api')
 sys.path.append('functions/fx_auto_trading/db')
+print('getcwd:      ', os.getcwd())
+print('__file__:    ', __file__)
 import boto3
 # import pandas as pd
 import numpy as numpy
@@ -21,8 +23,9 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-# from db import price_log
+from db import price_log
 # from api import oanda_api
+# from api import OandaApi
 # from . import db, api
 # import price_log
 # import oanda_api
