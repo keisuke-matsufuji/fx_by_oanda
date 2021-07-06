@@ -12,8 +12,8 @@ from decimal import Decimal
 # sys.path.append('/opt')
 # sys.path.append('/opt/python')
 
-sys.path.append('functions/fx_auto_trading/api')
-sys.path.append('functions/fx_auto_trading/db')
+sys.path.append('/var/task/functions/fx_auto_trading/api')
+sys.path.append('/var/task/functions/fx_auto_trading/db')
 print('getcwd:      ', os.getcwd())
 print('__file__:    ', __file__)
 import boto3
