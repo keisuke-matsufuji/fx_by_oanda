@@ -47,7 +47,9 @@ def lambda_handler(event, context):
     print('ls', ls)
     # カレントディレクトリを変更
     os.chdir('functions')
-    ls2 = os.listdir(currentdir)
+    currentdir2 = os.getcwd()
+    print('currentdir2:      ', currentdir2)
+    ls2 = os.listdir(currentdir2)
     print('ls2', ls2)
 
 
