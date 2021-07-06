@@ -23,8 +23,9 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-# from db import price_log
-# from api import oanda_api
+os.chdir('functions/fx_auto_trading')
+from db import price_log
+from api import oanda_api
 # from api import OandaApi
 # from . import db, api
 # import price_log
@@ -46,7 +47,7 @@ def lambda_handler(event, context):
     ls = os.listdir(currentdir)
     print('ls', ls)
     # カレントディレクトリを変更
-    os.chdir('functions')
+    os.chdir('functions/fx_auto_trading')
     currentdir2 = os.getcwd()
     print('currentdir2:      ', currentdir2)
     ls2 = os.listdir(currentdir2)
