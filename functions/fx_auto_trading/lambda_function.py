@@ -9,8 +9,8 @@ import time
 import datetime
 from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
-sys.path.append('/opt')
-sys.path.append('/opt/python')
+# sys.path.append('/opt')
+# sys.path.append('/opt/python')
 
 sys.path.append('functions/fx_auto_trading/api')
 sys.path.append('functions/fx_auto_trading/db')
@@ -23,7 +23,7 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-from db import price_log
+# from db import price_log
 # from api import oanda_api
 # from api import OandaApi
 # from . import db, api
