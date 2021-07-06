@@ -40,6 +40,9 @@ import pandas.tseries.offsets as offsets
 
 # Lambda Handler
 def lambda_handler(event, context):
+    print('getcwd2:      ', os.getcwd())
+    print('__file__2:    ', __file__)
+
     print('sys.path', sys.path)
     # Pyhon バージョン
     print('sys バージョン', sys.version)
