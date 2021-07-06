@@ -23,8 +23,8 @@ import pandas as pd
 import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-os.chdir('functions/fx_auto_trading')
-import import_test
+# os.chdir('functions/fx_auto_trading')
+# import import_test
 # from db import price_log
 # from api import oanda_api
 # from api import OandaApi
@@ -55,8 +55,8 @@ def lambda_handler(event, context):
     # ls2 = os.listdir(currentdir2)
     # print('ls2', ls2)
 
-    ImportTest = import_test.ImportTest()
-    ImportTest.print_test()
+    # ImportTest = import_test.ImportTest()
+    # ImportTest.print_test()
 
 
     # print('sys.path', sys.path)
