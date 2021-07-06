@@ -46,12 +46,14 @@ def lambda_handler(event, context):
     print('currentdir:      ', currentdir)
     ls = os.listdir(currentdir)
     print('ls', ls)
+    from api import oanda_api
+    from db import price_log
     # カレントディレクトリを変更
-    os.chdir('functions/fx_auto_trading')
-    currentdir2 = os.getcwd()
-    print('currentdir2:      ', currentdir2)
-    ls2 = os.listdir(currentdir2)
-    print('ls2', ls2)
+    # os.chdir('functions/fx_auto_trading')
+    # currentdir2 = os.getcwd()
+    # print('currentdir2:      ', currentdir2)
+    # ls2 = os.listdir(currentdir2)
+    # print('ls2', ls2)
 
 
     # print('sys.path', sys.path)
