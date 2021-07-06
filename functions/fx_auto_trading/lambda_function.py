@@ -24,8 +24,8 @@ import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 os.chdir('functions/fx_auto_trading')
-from db import price_log
-from api import oanda_api
+# from db import price_log
+# from api import oanda_api
 # from api import OandaApi
 # from . import db, api
 # import price_log
