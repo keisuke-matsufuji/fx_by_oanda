@@ -9,8 +9,8 @@ import time
 import datetime
 from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
-# sys.path.append('/opt')
-# sys.path.append('/opt/python')
+sys.path.append('/opt')
+sys.path.append('/opt/python')
 
 sys.path.append('/var/task/functions/fx_auto_trading/api')
 sys.path.append('/var/task/functions/fx_auto_trading/db')
@@ -40,12 +40,15 @@ import pandas.tseries.offsets as offsets
 
 # Lambda Handler
 def lambda_handler(event, context):
-    print('getcwd2:      ', os.getcwd())
-    print('__file__2:    ', __file__)
+    print('__file__:    ', __file__)
+    currentdir = os.getcwd()
+    print('currentdir:      ', currentdir)
+    ls = os.listdir(currentdir)
+    print('ls', ls)
 
-    print('sys.path', sys.path)
+    # print('sys.path', sys.path)
     # Pyhon バージョン
-    print('sys バージョン', sys.version)
+    # print('sys バージョン', sys.version)
 
     # path = "../../opt/python"
     # files = os.listdir(path)
