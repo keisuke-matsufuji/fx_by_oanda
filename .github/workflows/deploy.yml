@@ -35,6 +35,7 @@ jobs:
 
       - name: Deploy to Lambda
         run: |
+          cd functions/fx_auto_trading
           sls plugin install -n serverless-python-requirements
           export SLS_DEBUG=true
           # pip install --upgrade setuptool
