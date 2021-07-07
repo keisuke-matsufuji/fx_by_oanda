@@ -18,9 +18,9 @@ print('getcwd:      ', os.getcwd())
 print('__file__:    ', __file__)
 import boto3
 # import pandas as pd
-import numpy as numpy
-import pandas as pd
-import pandas.tseries.offsets as offsets
+# import numpy as numpy
+# import pandas as pd
+# import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 # os.chdir('functions/fx_auto_trading')
