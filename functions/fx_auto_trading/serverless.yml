@@ -39,8 +39,8 @@ custom:
     # layer: true
   
 
-package:
-  individually: true
+# package:
+#   individually: true
 #   exclude:
 #     - docker/lambda/**
 #     - docker/layers/**
