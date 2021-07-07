@@ -39,8 +39,8 @@ custom:
     # layer: true
   
 
-# package:
-#   individually: true
+package:
+  individually: true
 #   exclude:
 #     - docker/lambda/**
 #     - docker/layers/**
@@ -65,8 +65,8 @@ functions:
     name: ${self:service}-${self:provider.stage}--fx_auto_trading
     # module: functions/deploy_test
     module: functions/fx_auto_trading
-    package:
-      individually: true
+    # package:
+    #   individually: true
       # include:
       # - functions/deploy_test/**
       # exclude:
