@@ -1,6 +1,6 @@
 # pytz
 boto3
 oandapyV20
-pandas
+# pandas
 # requests
 # python-dotenv
