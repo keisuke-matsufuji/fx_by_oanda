@@ -2,5 +2,5 @@
 boto3
 oandapyV20
 # pandas
-# requests
+requests
 # python-dotenv
