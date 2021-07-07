@@ -25,8 +25,8 @@ import boto3
 # from ディレクトリ名 import モジュール名
 # os.chdir('functions/fx_auto_trading')
 # import import_test
-from db import price_log
-from api import oanda_api
+# from db import price_log
+# from api import oanda_api
 # from api import OandaApi
 # from . import db, api
 # import price_log
@@ -42,6 +42,8 @@ from api import oanda_api
 
 # Lambda Handler
 def lambda_handler(event, context):
+    print('sys.path', sys.path)
+
     print('__file__:    ', __file__)
     currentdir = os.getcwd()
     print('currentdir:      ', currentdir)
@@ -59,7 +61,6 @@ def lambda_handler(event, context):
     # ImportTest.print_test()
 
 
-    print('sys.path', sys.path)
     # Pyhon バージョン
     # print('sys バージョン', sys.version)
 
