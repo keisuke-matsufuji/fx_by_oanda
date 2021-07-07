@@ -35,7 +35,7 @@ custom:
     fileName: requirements.txt
     dockerizePip: true
     slim: true
-    zip: true
+    # zip: true
     # layer: true
   
 
