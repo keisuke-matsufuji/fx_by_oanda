@@ -32,6 +32,7 @@ plugins:
 custom:
   pythonRequirements:
     cacheLocation: ".static_cache"
+    fileName: requirements.txt
     dockerizePip: true
     slim: true
     zip: true
