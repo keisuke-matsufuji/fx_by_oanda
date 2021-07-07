@@ -32,11 +32,11 @@ plugins:
 custom:
   pythonRequirements:
     cacheLocation: ".static_cache"
-    fileName: requirements.txt
+    # fileName: requirements.txt
     dockerizePip: true
     slim: true
     # zip: true
-    # layer: true
+    layer: true
   
 
 # package:
@@ -75,8 +75,8 @@ functions:
       
     # handler: functions/fx_auto_trading/lambda_function.lambda_handler
     handler: lambda_function.lambda_handler
-    # layers:
-    #   - {Ref: BotoLambdaLayer}
+    layers:
+      - {Ref: BotoLambdaLayer}
     environment:
       DYNAMODB_ENDPOINT: 'https://dynamodb.us-east-2.amazonaws.com'
       ENV_PARAM_TEST: env_test
