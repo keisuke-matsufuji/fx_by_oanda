@@ -32,6 +32,8 @@ class OandaApi(object):
 		# OANDAアカウント読み込み
 		self.oanda_account_id = os.environ.get("OANDA_API_ACCOUNT_ID")
 		self.oanda_access_token = os.environ.get("OANDA_API_ACCESS_TOKEN")
+		print('oanda_account_id', self.oanda_account_id)
+		print('oanda_access_token', self.oanda_access_token)
 		# self.oanda_access_token = ''
 		# self.api = oandapyV20.API(access_token=self.oanda_access_token, environment="practice")
 		self.api = API(access_token=self.oanda_access_token, environment="practice")
