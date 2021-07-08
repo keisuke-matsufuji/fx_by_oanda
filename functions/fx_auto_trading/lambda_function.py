@@ -11,98 +11,26 @@ from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
 sys.path.append('/opt')
 sys.path.append('/opt/python')
-
-# sys.path.append('/var/task/functions/fx_auto_trading/api')
-# sys.path.append('/var/task/functions/fx_auto_trading/db')
-print('getcwd:      ', os.getcwd())
-print('__file__:    ', __file__)
 import boto3
-# import pandas as pd
-# import numpy as numpy
-# import pandas as pd
-# import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
-# os.chdir('functions/fx_auto_trading')
-# import import_test
 from db import price_log
 from api import oanda_api
-# from api import OandaApi
-# from . import db, api
-# import price_log
-# import oanda_api
-# try:
-#     import price_log
-# except ImportError:
-#   pass
-# try:
-#     import oanda_api
-# except ImportError:
-#   pass
 
 # Lambda Handler
 def lambda_handler(event, context):
-    print('sys.path', sys.path)
-
-    print('__file__:    ', __file__)
-    currentdir = os.getcwd()
-    print('currentdir:      ', currentdir)
-    ls = os.listdir(currentdir)
-    print('ls', ls)
-   
-    # カレントディレクトリを変更
-    # os.chdir('functions/fx_auto_trading')
-    # currentdir2 = os.getcwd()
-    # print('currentdir2:      ', currentdir2)
-    # ls2 = os.listdir(currentdir2)
-    # print('ls2', ls2)
-
-    # ImportTest = import_test.ImportTest()
-    # ImportTest.print_test()
-
-
-    # Pyhon バージョン
-    # print('sys バージョン', sys.version)
-
-    # path = "../../opt/python"
-    # files = os.listdir(path)
-    # print('files', files)
-
-    # path = "../../../../../opt/python"
-    # files = os.listdir(path)
-    # print('files', files)
-
-    # path = "../"
-    # files1 = os.listdir(path)
-    # print('files1', files1)
-    # path = "../../"
-    # files2 = os.listdir(path)
-    # print('files2', files2)
-    # path = "../../../"
-    # files3 = os.listdir(path)
-    # print('files3', files3)
-
-    # path = "../opt/python"
-    # files = os.listdir(path)
-    # print('files', files)
-
-    # path = "./api"
-    # files = os.listdir(path)
-    # p_opt = os.listdir('/opt')
-    # print('p_opt', p_opt)
-    # p_sys = os.listdir('/sys/module')
-    # print('p_sys', p_sys)
-
     i = 1
     # while i < 5000:
     while i < 2:
         # 現在日時
+        # JST = datetime.timezone(datetime.timedelta(hours=+9), 'JST')
+        # now = datetime.datetime.now(JST)
         now = datetime.datetime.now()
         # current_date_time = "{0:%Y-%m-%d %H:%M:%S}".format(now)
+        current_date_time = "{0:%Y-%m-%d %H:%M}".format(now)
 
         # 最新ローソク足日時・時刻
         Api = oanda_api.OandaApi()
-        # Api = api.oanda_api.OandaApi()
         candle_data = Api.get_candles("M1", -1)
 
         # 最新ローソク足データが現在日付と一致していない場合（市場が閉まっていた場合）、処理を終了する
@@ -122,7 +50,11 @@ def lambda_handler(event, context):
             loop_flg = True
             loop_count = 1
             while loop_flg:
-                pre_date = pd.to_datetime(candle_data["close_time"]) - offsets.Day(loop_count)
+                pre_date =  str(datetime.datetime.strptime(
+                    candle_data["close_time"].split('.')[0] + '+00:00',
+                    '%Y-%m-%dT%H:%M:%S%z')
+                    + datetime.timedelta(days=-loop_count)
+                )
                 pre_date = pre_date.strftime('%Y-%m-%d')
                 last_data = PriceLog.get_item(pre_date)
                 if len(last_data) > 0:

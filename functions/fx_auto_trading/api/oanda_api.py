@@ -10,8 +10,6 @@ sys.path.append('/opt/python')
 # import oandapyV20
 from oandapyV20 import API
 from oandapyV20.endpoints import accounts, instruments, orders, positions
-import pandas as pd
-import pandas.tseries.offsets as offsets
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 from db import position_log
@@ -56,13 +54,16 @@ class OandaApi(object):
 			data = response["candles"][i]
 			# print('data', data)
 
-			close_time = pd.to_datetime(data["time"]) + offsets.Hour(9)
-			# close_time = data["time"]
-			candle_date = close_time.strftime('%Y-%m-%d')
-			candle_time = close_time.strftime('%H:%M')
+			close_time = data["time"]
+			candle_d_t =  str(datetime.datetime.strptime(
+				data["time"].split('.')[0] + '+00:00',
+            	'%Y-%m-%dT%H:%M:%S%z')
+				+ datetime.timedelta(hours=9)
+			)
+			candle_date = candle_d_t[0:10]
+			candle_time = candle_d_t[11:16]
 			candle_date_time = datetime.datetime.strptime(
-				close_time.strftime('%Y-%m-%d %H:%M:%S'),
-				'%Y-%m-%d %H:%M:%S'
+				(candle_date + ' ' + candle_time), '%Y-%m-%d %H:%M'
 			)
 			self.date = candle_date
 
@@ -94,7 +95,7 @@ class OandaApi(object):
 	# def print_price(data):
 	def print_price(self, data):
 		# print("最新の価格データ")
-		print( "時間: " + str(data["close_time"])
+		print( "時間: " + str(data["candle_date_time"])
 					+ " 始値: " + str(data["open_price"])
 					+ " 終値: " + str(data["close_price"]) )
 
