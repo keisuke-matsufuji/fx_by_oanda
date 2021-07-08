@@ -112,6 +112,6 @@ def lambda_handler(event, context):
         # Api.close_buy_position()
         # PositionLog = position_log.PositionLog()
         # PositionLog.get_item()
-        time.sleep(60)
+        # time.sleep(60)
 
     print('all done')
