@@ -53,5 +53,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_LAMBDA_ROLE_ARN: ${{ secrets.AWS_LAMBDA_ROLE_ARN }}
           OANDA_API_ACCOUNT_ID: ${{ secrets.OANDA_API_ACCOUNT_ID }}
+          OANDA_API_ACCESS_TOKEN: ${{ secrets.OANDA_API_ACCESS_TOKEN }}
 
       
