@@ -78,6 +78,7 @@ class PriceLog(object):
     def get_item(self, date):
         # テーブルの取得
         table = self.get_table()
+        print('table', table)
         query_item = table.query(
             KeyConditionExpression = Key('date').eq(date),
             ScanIndexForward = False, # 昇順か降順か(デフォルトはTrue=昇順)
