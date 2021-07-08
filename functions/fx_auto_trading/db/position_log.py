@@ -15,14 +15,15 @@ class PositionLog(object):
     """
     # エンドポイントURL
     endpoint_url = os.environ.get("DYNAMODB_ENDPOINT", None)
+    region_name = os.environ.get("DYNAMODB_REGION", None)
     # DynamoDb接続情報取得
     resource = boto3.resource('dynamodb',     
                         endpoint_url=endpoint_url,
-                        region_name='us-west-2',
+                        region_name=region_name,
                         )
     client = boto3.client('dynamodb',     
                         endpoint_url=endpoint_url,
-                        region_name='us-west-2',
+                        region_name=region_name,
                         )
     table_name = 'position_log'
 
