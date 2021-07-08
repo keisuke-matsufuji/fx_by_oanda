@@ -45,6 +45,7 @@ def lambda_handler(event, context):
         PriceLog = price_log.PriceLog()
         # PriceLog = db.price_log.PriceLog()
         last_data = PriceLog.get_item(candle_data["candle_date"])
+        print('last_data', last_data)
         # 現在日時でDBデータの取得ができなかった場合（当日初回実行時）、前日日付でデータ取得（取得できるまで）
         if len(last_data) == 0:
             loop_flg = True
@@ -55,7 +56,7 @@ def lambda_handler(event, context):
                     '%Y-%m-%dT%H:%M:%S%z')
                     + datetime.timedelta(days=-loop_count)
                 )
-                pre_date = pre_date.strftime('%Y-%m-%d')
+                print('pre_date', pre_date)
                 last_data = PriceLog.get_item(pre_date)
                 if len(last_data) > 0:
                     loop_flg = False
