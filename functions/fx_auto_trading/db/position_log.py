@@ -95,7 +95,6 @@ class PositionLog(object):
     # 
     # アイテムの参照
     # 
-    # def get_item(self, date):
     def get_item(self):
         # テーブルの取得
         table = self.get_table()
@@ -107,9 +106,6 @@ class PositionLog(object):
             FilterExpression = Key('date').between('2021-06-28', '2021-07-04')
         )
         # print('item', item)
-
-        # テーブル削除
-        # table.delete()
 
         return item['Items']
     
