@@ -1,34 +1,15 @@
 version: "3"
 
 services:
-  # layer:
-  #   container_name: layer
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker/layers/Dockerfile
-  #   tty: true
-  #   volumes:
-  #     - ./opt/:/opt
-  #   ports:
-  #     - 3000:3000
-  #   working_dir: /opt
-  #   environment:
-  #     TZ: 'Asia/Tokyo'
-  
   # Lambda function (fx_auto_trading)
   fx_auto_trading:
-    # image: lambci/lambda:python3.8
     container_name: docker-lambda-local
     tty: true
     build:
       context: .
       dockerfile: ./functions/fx_auto_trading/Dockerfile
-    # volumes:
-    #   - ./docker/lambda:/var/task:delegated
-    #   - ./opt:/opt:delegated
     volumes:
       - ./functions/fx_auto_trading:/var/task:delegated
-      # - ./:
       - ./opt:/opt:delegated,rw
     
     working_dir: /var/task
@@ -40,14 +21,11 @@ services:
       TZ: 'Asia/Tokyo'
 
     command: python -c "import lambda_function; lambda_function.lambda_handler({}, None)"
-    # links:
-    #   - dynamodb
     depends_on:
       - dynamodb
     networks:
       - network
-    
-    
+  
   # dynamodb_local
   dynamodb:
     image: amazon/dynamodb-local:1.13.4
@@ -57,14 +35,10 @@ services:
     ports:
       - "5984:5984"
     command: "-jar DynamoDBLocal.jar -port 5984 -dbPath ./data -sharedDb"
-    # networks:
-    #   - lambda-local
     networks:
       - network
   
 networks:
-  # lambda-local:
-  #     external: true
   network:
     driver: bridge
     external: true

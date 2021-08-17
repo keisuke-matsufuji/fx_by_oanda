@@ -1,6 +1,0 @@
-# pytz
-# boto3
-# oandapyV20
-# pandas
-# # requests
-# # python-dotenv
