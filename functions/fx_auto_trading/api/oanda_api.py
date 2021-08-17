@@ -113,7 +113,7 @@ class OandaApi(object):
 	# 買いシグナルが出たら買い注文を出す関数
 	# 
 	def buy_signal(self, candle_data, info):
-		self.exec_buy_order()
+		# self.exec_buy_order()
 		# self.close_buy_position()
 		print('self.oanda_account_id', self.oanda_account_id)
 		print('self.oanda_access_token', self.oanda_access_token)
