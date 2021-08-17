@@ -113,9 +113,11 @@ class OandaApi(object):
 	# 買いシグナルが出たら買い注文を出す関数
 	# 
 	def buy_signal(self, candle_data, info):
+		# TODO:動作確認用(注文APIの実行)
 		# self.exec_buy_order()
-		self.close_buy_position()
+		# self.close_buy_position()
 		# self.get_open_position()
+
 		# ローソク足データの陽線判定
 		is_asecend = self.check_ascend(candle_data)
         # フィルター処理判定
