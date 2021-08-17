@@ -32,12 +32,7 @@ class OandaApi(object):
 		# OANDAアカウント読み込み
 		self.oanda_account_id = os.environ.get("OANDA_API_ACCOUNT_ID")
 		self.oanda_access_token = os.environ.get("OANDA_API_ACCESS_TOKEN")
-		print('oanda_account_id', self.oanda_account_id)
-		print('oanda_access_token', self.oanda_access_token)
-		# self.oanda_access_token = ''
-		# self.api = oandapyV20.API(access_token=self.oanda_access_token, environment="practice")
 		self.api = API(access_token=self.oanda_access_token, environment="practice")
-		# r = instruments.InstrumentsCandles(instrument="USD_JPY",params={"granularity": "M1"})
 		self.date = ""
 		
 	# 
@@ -52,9 +47,7 @@ class OandaApi(object):
 			}
 			instrument = instruments.InstrumentsCandles(instrument="USD_JPY", params=params)
 			response = self.api.request(instrument)
-			# print('response', response)
 			data = response["candles"][i]
-			# print('data', data)
 
 			close_time = data["time"]
 			candle_d_t =  str(datetime.datetime.strptime(
@@ -104,7 +97,6 @@ class OandaApi(object):
 	# 
 	# 陽線かどうか・ローソク足の上昇率を判定する関数
 	# 			
-	# def check_ascend(data):
 	def check_ascend(self, data):
 		if data["close_price"] > data["open_price"]:
 			if (data["close_price"] / data["open_price"] - 1) * 100 > 0.005:
@@ -113,7 +105,6 @@ class OandaApi(object):
 	# 
 	# フィルター処理
 	# 
-	# def check_candles(data):
 	def check_candles(self, data):
 		if (data["close_price"] / data["open_price"] - 1) * 100 > 0.005:
 			return True
@@ -121,7 +112,6 @@ class OandaApi(object):
 	# 
 	# 買いシグナルが出たら買い注文を出す関数
 	# 
-	# def buy_signal(data, flag):
 	def buy_signal(self, candle_data, info):
 		# ローソク足データの陽線判定
 		is_asecend = self.check_ascend(candle_data)
@@ -137,24 +127,16 @@ class OandaApi(object):
 				self.exec_buy_order()
 				info['buy_position'] = True
 				info['buy_signal'] = 0
-				# flag["order"] = True
             # デバッグ用
 			if info['buy_signal'] == 2:
 				print('２回連続で陽線が出た！！')
 		else:
 			info['buy_signal'] = 0
-		# print('buy_signal info', info)
 		return info
 	
 	# 
 	# 手仕舞いのシグナルが出たら決済注文を出す関数(買い注文の決済)
 	# 
-	# def judge_close_buy_position(self, candle_data, last_data, info):
-	# 	if candle_data["close_price"] < last_data["close_price"]:
-	# 		print("前回の終値を下回ったので" + str(candle_data["close_price"]) + "で決済")
-	# 		# info["position"] = False
-	# 		info["buy_position"] = False
-	# 	return info
 	def judge_close_buy_position(self, candle_data, last_data, info):
 		positions = self.get_open_position()
 		# ローソク足の終値から下降トレンドに入っていると判定した場合、ポジションを決済する

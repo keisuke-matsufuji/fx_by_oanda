@@ -1,8 +1,3 @@
-try:
-    import unzip_requirements
-except ImportError:
-  pass
-
 import os
 import sys
 import time
@@ -20,14 +15,11 @@ from api import oanda_api
 # Lambda Handler
 def lambda_handler(event, context):
     i = 1
-    # while i < 5000:
+    # while i < 5000: // Local 動作確認用
     while i < 2:
         # 現在日時
-        # JST = datetime.timezone(datetime.timedelta(hours=+9), 'JST')
-        # now = datetime.datetime.now(JST)
         now = datetime.datetime.now()
         # current_date_time = "{0:%Y-%m-%d %H:%M:%S}".format(now)
-        current_date_time = "{0:%Y-%m-%d %H:%M}".format(now)
 
         # 最新ローソク足日時・時刻
         Api = oanda_api.OandaApi()
@@ -77,9 +69,6 @@ def lambda_handler(event, context):
                     print('DBからデータの取得ができなかったため、ローソク足データを格納し処理を終了')
                     return
 
-
-        # last_date = last_data[0]['date']
-        # last_time = last_data[0]['time']
 
         # 前回のフラグ情報をセット
         info = {
