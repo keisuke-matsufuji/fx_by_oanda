@@ -115,8 +115,7 @@ class OandaApi(object):
 	def buy_signal(self, candle_data, info):
 		# self.exec_buy_order()
 		# self.close_buy_position()
-		print('self.oanda_account_id', self.oanda_account_id)
-		print('self.oanda_access_token', self.oanda_access_token)
+		self.get_open_position()
 		# ローソク足データの陽線判定
 		is_asecend = self.check_ascend(candle_data)
         # フィルター処理判定
