@@ -29,7 +29,8 @@ https://www.oanda.jp/info/758
 
 ### 開発環境
 docker-composeでAWS Lambda + DynamoDB環境の構築を行いました。  
-
+- [Dockerfile](/docker-compose.yml)
+- [docker-compose.yml]](/docker-compose.yml)
 
 ### CI/CD
 Github Actions + Serverless Frameworkを用い、mainブランチにマージがされるとAWS上にデプロイされるような仕組みにしています。
