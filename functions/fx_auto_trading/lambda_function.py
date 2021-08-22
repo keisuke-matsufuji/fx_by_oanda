@@ -1,12 +1,9 @@
-import os
 import sys
-import time
 import datetime
 from decimal import Decimal
 # layerにあがっているpythonモジュール群を参照するため、pathを追加
 sys.path.append('/opt')
 sys.path.append('/opt/python')
-import boto3
 # 自作モジュールのインポート
 # from ディレクトリ名 import モジュール名
 from db import price_log
@@ -35,9 +32,9 @@ def lambda_handler(event, context):
         # ------------------
         # 前回データをDBから取得
         PriceLog = price_log.PriceLog()
-        # PriceLog = db.price_log.PriceLog()
         last_data = PriceLog.get_item(candle_data["candle_date"])
-        print('last_data', last_data)
+        # TODO:前回データをログに出力
+        # print('last_data', last_data)
         # 現在日時でDBデータの取得ができなかった場合（当日初回実行時）、前日日付でデータ取得（取得できるまで）
         if len(last_data) == 0:
             loop_flg = True
@@ -61,9 +58,9 @@ def lambda_handler(event, context):
                         'open_price'  : Decimal(str(candle_data['open_price'])),
                         'close_price' : Decimal(str(candle_data['close_price'])),
                         'buy_signal'  : 0,
-                        # 'sell_signal': 0,
+                        # 'sell_signal': 0, // TODO：売り注文は現時点で未実装
                         'buy_position': False,
-                        # 'sell_position': False,
+                        # 'sell_position': False, // TODO：売り注文は現時点で未実装
                     }
                     PriceLog.put_item(params)
                     print('DBからデータの取得ができなかったため、ローソク足データを格納し処理を終了')
@@ -90,13 +87,15 @@ def lambda_handler(event, context):
             'open_price'  : Decimal(str(candle_data['open_price'])),
             'close_price' : Decimal(str(candle_data['close_price'])),
             'buy_signal'  : info["buy_signal"],
-            # 'sell_signal': 0,
+            # 'sell_signal': 0, // TODO：売り注文は現時点で未実装
             'buy_position': info["buy_position"],
-            # 'sell_position': False,
+            # 'sell_position': False, // TODO：売り注文は現時点で未実装
         }
         PriceLog.put_item(params)
         
         i += 1
+
+        # TODO：開発環境用
         # Api.exec_buy_order()
         # Api.close_buy_position()
         # PositionLog = position_log.PositionLog()
