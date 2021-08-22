@@ -34,12 +34,18 @@ docker-composeでAWS Lambda + DynamoDB環境の構築を行いました。
 
 ### CI/CD
 Github Actions + Serverless Frameworkを用い、mainブランチにマージがされるとAWS上にデプロイされるような仕組みにしています。  
-- [deploy.yml](/.gihub/workflows/deploy.yml)
+- [deploy.yml](/.github/workflows/deploy.yml)
 - [serverless.yml](/functions/fx_auto_trading/serverless.yml)
 
 
-### プログラムの概略
+## プログラムの概略
 - FX市場がオープンしている時間帯に、USD_JPYのローソク足データを取得します。  
 - 1分置きに価格データを取得し前回の終値よりも価格が上がっている状態(価格+価格の0.005%よりも高い状態)が3回連続で続けば、買いトレンドとし、新規買い注文を発行する
 - 買いポジションを持っている状態で、ローソク足データの終値が0.3%下落した場合、下降トレンドに入ったとして、ポジションを決済する
 - 買いポジションを持っている状態で、ローソク足データの終値が0.5%上昇した場合、利益確定のためポジションを決済する
+
+
+## 今後
+- 売り注文ロジックの作成  
+- 過去データを用いてのバックテストの実施
+- 売買ロジックの見直し
